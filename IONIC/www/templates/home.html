@@ -1,0 +1,94 @@
+<!--
+  This template loads for the 'home' state (app.js)
+  Show list of shortcuts to other screens
+-->
+<ion-view view-title="TaxiApp" ng-init="init()">
+  <ion-content scroll="false">
+    <!-- Show map here -->
+    <div id="map" ng-style="{height: mapHeight + 'px'}"></div>
+
+    <div class="modal-bg black-transparent" ng-show="showModalBg"></div>
+
+    <div class="map-overlay list">
+     <!--  <div class="item" ui-sref="places">
+        <span class="label gray">PICK-UP</span>
+        <div class="bold">Hanoi university of technology</div>
+      </div> -->
+      <div class="item" ui-sref="places">
+        <span class="label gray bold">Destino</span>
+        <div class="italic">Selecciona tu destino</div>
+      </div>
+    </div>
+
+    <!-- Booking information -->
+    <div class="booking-info">
+      <!-- <div class="button-circle button-next balanced-bg light" ng-hide="showForm" ng-click="toggleForm()">NEXT</div> -->
+
+      <!-- <div class="padding" ng-class="{'stable-bg': !showForm, 'light': showForm}">Choose your drop-off above</div> -->
+
+      <div class="vehicles row text-center" ng-hide="showForm">
+
+        <!-- <div class="col item-vehicle" ng-repeat="vehicle in vehicles" ng-class="{'active': vehicle.active}" ng-click="toggleVehicle($index)">
+          <i class="{{ vehicle.icon }}"></i>
+          <span>{{ vehicle.name }}</span>
+        </div> -->
+
+        <div class="col">
+          <button class="button button-block button-balanced" ng-click="toggleForm()" ui-sref="home">
+            Solicitar Taxi
+          </button>
+        </div>
+      </div>
+
+      
+
+      <!-- POP UP AL PEDIR UN TAXI -->
+      <div class="booking-form list padding-left padding-right stable-bg" ng-show="showForm">
+
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-cash"></i>
+          <!-- <div ui-sref="payment_method">  ESTA REFERENCIA AL TIPO DE PAGO-->
+          <div>
+            <div>Forma de pago</div>
+            <span class="bold">Efectivo</span>
+          </div>
+          <!-- <i class="icon ion-arrow-right-b gray"></i> -->
+        </div>
+
+        <!-- <div class="item row">
+          <div class="col button button-light">
+            Buscame ahora
+          </div> -->
+          <!-- <div class="col button"> -->
+            <!-- Pick-up Later -->
+          <!-- </div> -->
+        <!-- </div> -->
+
+        <div class="item item-icon-left" ng-click="showNotePopup()">
+          <i class="icon ion-ios-compose-outline"></i>
+          <span class="italic dark" ng-hide="note">Notas al conductor</span>
+          <span class="dark" ng-show="note">{{ note }}</span>
+        </div>
+
+        <div class="item item-icon-left" ng-click="showPromoPopup()">
+          <i class="icon ion-person-stalker"></i>
+          <span class="italic dark" ng-hide="promo">Cantidad de pasajeros</span>
+          <span class="dark" ng-show="promo">{{ promo }}</span>
+        </div>
+        
+        <!-- <div class="item item-icon-left" ng-click="showPromoPopup()">
+          <i class="icon ion-pricetag"></i>
+          <span class="italic dark" ng-hide="promo">Promo Code</span>
+          <span class="dark"  ng-show="promo">{{ promo }}</span>
+        </div> -->
+
+
+        <div class="button button-balanced button-block" ng-click="book()">Buscar conductor</div>
+
+      </div>
+      <!-- ACA TERMINA EL POPUP -->
+
+
+    </div>
+  </ion-content>
+</ion-view>
